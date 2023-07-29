@@ -9,10 +9,10 @@
 
 
 ## Screenshot Project
-![table_produk](./screenshot/table_produk.png)
+<!-- ![table_produk](./screenshot/table_produk.png)
 ![add_produk](./screenshot/add_produk.png)
 ![edit_produk](./screenshot/edit_produk.png)
-![delete_produk](./screenshot/delete_produk.png)
+![delete_produk](./screenshot/delete_produk.png) -->
 
 ## About Laravel
 
