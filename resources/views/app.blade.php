@@ -25,15 +25,22 @@
                 @csrf
                 <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
                 <input type="text" name="url" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Enter</button>
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Enter</button>
             </form>
 
             <div class="d-flex justify-content-between">
                 <h1>Tabel User</h1>
                 <div class="d-flex align-content-end flex-wrap">
-                    <button class="btn btn-info text-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    @if ($totalData === 0)
+                    <button disabled class="btn btn-info text-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Tambah
                     </button>
+                        
+                    @else
+                    <button class="btn btn-info text-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Tambah
+                    </button> 
+                    @endif
                 </div>
             </div>
             <table class="table table-striped">
@@ -49,16 +56,16 @@
                 </thead>
                 <tbody>
 
-                    @foreach ($users as $user)
+                    @foreach ($users as $index => $user)
                     <tr>
-                        <th><strong>{{$loop->iteration}}</strong></th>
+                        <th><strong>{{$index+1}}</strong></th>
                         <td>{{$user['nama']}}</td>
                         <td>{{$user['jabatan']}}</td>
                         <td>{{$user['jenis_kelamin']}}</td>
                         <td>{{$user['alamat']}}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-block">
-                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('delete_produk', $user->id) }}" method="POST">
+                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('delete_user', $user->id) }}" method="POST">
                                     <button data-id="{{$user->id}}" class="btn-edit btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#modalEdit-{{$user->id}}">Edit</button>
                                     
                                     @csrf
@@ -77,7 +84,7 @@
                                     <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('update_produk', $user->id) }}" method="post">
+                                    <form action="{{ route('update_user', $user->id) }}" method="post">
                                         @method('put')
                                         @csrf
                                         <div class="row mb-3">
@@ -105,9 +112,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                    
-                    
+                    @endforeach           
                 </tbody>
             </table>
         </div>
@@ -121,7 +126,7 @@
                         <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/produk" method="post">
+                        <form action="/users" method="post">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
@@ -132,8 +137,15 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                {{-- <div class="col">
                                     <input type="text" name="jenis_kelamin" class="form-control" id="inputNumber2" placeholder="Jenis" required>
+                                </div> --}}
+                                <div class="col">
+                                    <select class="form-select" aria-label="Default select example" name="jenis_kelamin" >
+                                        <option selected>Jenis Kelamin</option>
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                      </select>
                                 </div>
                                 <div class="col">
                                     <input type="text" name="alamat" class="form-control" id="inputText2" placeholder="Alamat" required>
@@ -149,6 +161,9 @@
             </div>
         </div>
 
+        <nav class="container">
+          {{ $users->links('pagination::bootstrap-5') }}
+        </nav>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     

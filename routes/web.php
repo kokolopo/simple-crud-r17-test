@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/users', [ProdukController::class, 'fetchUsers'])->name('hit_api');
-Route::get('/', [ProdukController::class, 'index']);
-Route::post('/produk', [ProdukController::class, 'tamabah'])->name('save_produk');
-Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('update_produk');
-Route::delete('/produk/{id}', [ProdukController::class, 'delete'])->name('delete_produk');
+Route::post('/users', [UserController::class, 'fetchUsers'])->name('hit_api');
+Route::get('/', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'tamabah'])->name('save_user');
+Route::put('/users/{id}', [UserController::class, 'update'])->name('update_user');
+Route::delete('/users/{id}', [UserController::class, 'delete'])->name('delete_user');
 
