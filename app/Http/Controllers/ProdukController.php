@@ -13,7 +13,7 @@ class ProdukController extends Controller
         $users = User::orderBy('id', 'DESC')->get();
 
         return view('app')->with([
-            'produks' => $users
+            'users' => $users
         ]);
     }
 
@@ -26,7 +26,7 @@ class ProdukController extends Controller
             'alamat' => 'required',
         ]);
 
-        $newProduk = new Produk([
+        $newProduk = new User([
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
             'jenis_kelamin' => $request->jenis_kelamin,

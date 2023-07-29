@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ProdukController::class, 'index']);
-Route::post('/produk', [ProdukController::class, 'tamabahProduk'])->name('save_produk');
-Route::put('/produk/{id}', [ProdukController::class, 'updateProduk'])->name('update_produk');
-Route::delete('/produk/{id}', [ProdukController::class, 'deleteProduk'])->name('delete_produk');
+Route::post('/produk', [ProdukController::class, 'tamabah'])->name('save_produk');
+Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('update_produk');
+Route::delete('/produk/{id}', [ProdukController::class, 'delete'])->name('delete_produk');
 
