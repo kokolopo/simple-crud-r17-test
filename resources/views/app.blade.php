@@ -20,6 +20,14 @@
         @endif
 
         <div class="container mt-5">
+            <label for="basic-url" class="form-label">Your vanity URL</label>
+            <form class="input-group mb-3" action="/users" method="post">
+                @csrf
+                <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                <input type="text" name="url" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Enter</button>
+            </form>
+
             <div class="d-flex justify-content-between">
                 <h1>Tabel User</h1>
                 <div class="d-flex align-content-end flex-wrap">
@@ -74,18 +82,18 @@
                                         @csrf
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <input type="text" name="nama_produk" value="{{$user->nama_produk}}" class="form-control" id="inputText1" placeholder="Nama" required>
+                                                <input type="text" name="nama" value="{{$user->nama}}" class="form-control" id="inputText1" placeholder="Nama" required>
                                             </div>
                                             <div class="col">
-                                                <input type="text" name="harga" value="{{$user->harga}}" class="form-control" id="inputNumber1" placeholder="Harga" required>
+                                                <input type="text" name="jabatan" value="{{$user->jabatan}}" class="form-control" id="inputNumber1" placeholder="Jabatan" required>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <input type="text" name="jumlah" value="{{$user->jumlah}}" class="form-control" id="inputNumber2" placeholder="Jumlah" required>
+                                                <input type="text" name="jenis_kelamin" value="{{$user->jenis_kelamin}}" class="form-control" id="inputNumber2" placeholder="Jenis Kelamin" required>
                                             </div>
                                             <div class="col">
-                                                <input type="text" name="keterangan" value="{{$user->keterangan}}" class="form-control" id="inputText2" placeholder="Keterangan" required>
+                                                <input type="text" name="alamat" value="{{$user->alamat}}" class="form-control" id="inputText2" placeholder="Alamat" required>
                                             </div>
                                         </div>
                                         <div class="modal-footer mt-3">

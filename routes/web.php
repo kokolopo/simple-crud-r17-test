@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/users', [ProdukController::class, 'fetchUsers'])->name('hit_api');
 Route::get('/', [ProdukController::class, 'index']);
 Route::post('/produk', [ProdukController::class, 'tamabah'])->name('save_produk');
 Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('update_produk');

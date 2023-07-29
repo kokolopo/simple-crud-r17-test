@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -43,7 +42,7 @@ class ProdukController extends Controller
         return User::find($id);
     }
 
-    public function updateProduk($id, Request $request)
+    public function update($id, Request $request)
     {
         $produk = User::find($id);
         $produk->update($request->except(['_token','submit']));    
@@ -51,10 +50,15 @@ class ProdukController extends Controller
         return redirect()->back()->with('success', 'Berhasil Perbaharui Data.');
     }
 
-    public function deleteProduk($id)
+    public function delete($id)
     {
         $produk = User::find($id);
         $produk->delete();
         return redirect()->back()->with('success', 'Berhasil Menghapus Data.');
+    }
+
+    public function fetchUsers(Request $request)
+    {
+        dd($request->url);
     }
 }
